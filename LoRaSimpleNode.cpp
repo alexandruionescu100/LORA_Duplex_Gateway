@@ -1,6 +1,4 @@
 /*
-  LoRa Simple Gateway/Node Exemple
-
   This code uses InvertIQ function to create a simple Gateway/Node logic.
 
   Gateway - Sends messages with enableInvertIQ()
@@ -20,10 +18,12 @@
   See the Semtech datasheet, http://www.semtech.com/images/datasheet/sx1276.pdf
   for more on InvertIQ register 0x33.
 
-  created 05 August 2018
-  by Luiz H. Cassettari
+Changes: 
+- The starting point for this project is: https://github.com/akshayabali/pico-lora/
+- Corrections regarding how interupts are handled were made;
+- Library for SD card was added;
+- Library for ssd1306 was added;
 
-  translated by Akshaya Bali
 */
 
 #include "stdlib.h"
@@ -458,17 +458,6 @@ for(int i=0; i<sizeof(words)/sizeof(char *); ++i) {
   //sd end
 
   while (1)  {
-    /*
-    if (runEvery(10000)) { // repeat every 1000 millis
-
-      message = "HeLoRa World! ";
-      message += "I'm a Gateway! ";
-      message += to_ms_since_boot(get_absolute_time());
-
-      LoRa_sendMessage(message); // send a message
-      printf("Send Message!");
-    }
-    */
 
     switch (SystemState)
     {
